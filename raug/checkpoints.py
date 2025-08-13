@@ -111,7 +111,7 @@ def load_model (checkpoint_path, model, opt_fn=None, loss_fn=None, epoch=None):
     if not os.path.exists(checkpoint_path):
         raise Exception ("The {} does not exist!".format(checkpoint_path))
 
-    ckpt = torch.load(checkpoint_path)
+    ckpt = torch.load(checkpoint_path, weights_only=False)
     model.load_state_dict(ckpt['model_state_dict'])
 
     if opt_fn is not None and loss_fn is not None:
